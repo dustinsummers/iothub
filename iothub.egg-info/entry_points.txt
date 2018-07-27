@@ -1,0 +1,3 @@
+[console_scripts]
+iothub = iothub.cli:main
+

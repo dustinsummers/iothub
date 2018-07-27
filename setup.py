@@ -7,7 +7,7 @@ from subprocess import call
 
 from setuptools import Command, find_packages, setup
 
-from skele import __version__
+from iothub import __version__
 
 
 this_dir = abspath(dirname(__file__))
@@ -28,7 +28,7 @@ class RunTests(Command):
 
     def run(self):
         """Run all tests!"""
-        errno = call(['py.test', '--cov=skele', '--cov-report-term-missing'])
+        errno = call(['py.test', '--cov=iothub', '--cov-report-term-missing'])
         raise SystemExit(errno)
 
 
@@ -37,9 +37,9 @@ class RunTests(Command):
             version = __version__,
             description = 'A command line program for Azure IoT_Hub Interactions.',
             long_description = long_description,
-            url = 'https://www.google.com'
-            author = 'Dustin Summers'
-            author_email = 'dustin.summers@fortegollc.com'
+            url = 'https://www.google.com',
+            author = 'Dustin Summers',
+            author_email = 'dustin.summers@fortegollc.com',
             license = 'UNLICENSE',
             classifiers = [
                 'Intended Audience :: Developers/Hackers',
@@ -54,6 +54,8 @@ class RunTests(Command):
                 'Programming Language :: Python :: 3.2',
                 'Programming Language :: Python :: 3.3',
                 'Programming Language :: Python :: 3.4',
+                'Programming Language :: Python :: 3.6',
+                'Programming Language :: Python :: 3.7'
                 ],
             keywords = 'cli',
             packages = find_packages(exclude=['docs', 'tests*']),
@@ -66,7 +68,7 @@ class RunTests(Command):
                 'iothub=iothub.cli:main',
                 ],
             },
-        cmdclass = {'test': RunTests},
+        #cmdclass = {'test': RunTests},
     )
 
 
