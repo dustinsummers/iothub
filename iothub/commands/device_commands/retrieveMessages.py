@@ -136,7 +136,6 @@ def usage():
 
 
 def check_file_ext(x509_file):
-
     if not x509_file.endswith('.pem'):
         print("Wrong file extension. Must be a .pem file...\n"
               "python Simulatedx509Device <certificate.pem> <key.pem>")
@@ -153,6 +152,15 @@ def check_file(file, file_header):
     else:
         print("File not formatted correctly: %s. \nTry another. ")
         exit()
+
+
+def retrieve(self):
+    print("We are in retrieveMessages")
+    # print(self.options)
+    if "-C" or "--connection" in self.options and self.options["-C"] is not None:
+        if "<connection-string>" in self.options:
+            print(self.options["<connection-string>"])
+
 
 
 # Main method
