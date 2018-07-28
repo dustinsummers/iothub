@@ -158,6 +158,7 @@ def retrieve(self):
     istrue = self.options[CONNECT_SHORT] or self.options[CONNECT_LONG]
     print("Is true? %s" % istrue)
 
+    # todo: move the ands down to the next line
     # Check if user is attempting to connect with connection string
     if (self.options[CONNECT_SHORT] or self.options[CONNECT_LONG] and
             self.options[CONNECTION_STRING] is not None):

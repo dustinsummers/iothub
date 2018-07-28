@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfaef9cc-fdd2-4be7-bff5-fc7c4fc6cf0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/iothub/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,13 +36,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="9275" />
+          <entry key="py" value="9347" />
           <entry key="rst" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="9275" />
+          <entry key="Python" value="9347" />
           <entry key="ReST" value="1" />
         </counts>
       </usages-collector>
@@ -127,11 +125,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="470">
-                  <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
+                <state relative-caret-position="323">
+                  <caret line="160" column="39" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
                   <folding>
                     <element signature="e#0#10#0" expanded="true" />
-                    <marker date="1532739168668" expanded="true" signature="5405:7326" ph="..." />
+                    <marker date="1532740490555" expanded="true" signature="5405:7374" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -382,11 +380,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
+        <state relative-caret-position="323">
+          <caret line="160" column="39" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1532739168668" expanded="true" signature="5405:7326" ph="..." />
+            <marker date="1532740490555" expanded="true" signature="5405:7374" ph="..." />
           </folding>
         </state>
       </provider>
