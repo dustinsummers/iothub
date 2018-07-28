@@ -5,7 +5,7 @@ Usage:
     iothub hello
     iothub device receive (-C|--connect) <connection-string>
     iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key>
-    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--acces s-key) <access-key>
+    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key>
     iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key>
     iothub service send (-t|--text) <text> (-C|--connect) <connection-string>
     iothub service send (-t|--text) <text> (-H|--host) <host-name> (-N|--access-name) <access-name> (-K|--access-key) <access-key>

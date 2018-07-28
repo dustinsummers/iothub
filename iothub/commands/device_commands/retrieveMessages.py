@@ -154,20 +154,43 @@ def check_file(file, file_header):
 
 
 def retrieve(self):
-    print("We are in retrieveMessages")
     print(self.options)
+    istrue = self.options[CONNECT_SHORT] or self.options[CONNECT_LONG]
+    print("Is true? %s" % istrue)
 
-    # Check if one of the connection options is available
-    if CONNECT_SHORT or CONNECT_LONG in self.options and CONNECTION_STRING in self.options is not None:
-        print(self.options[CONNECTION_STRING])
+    # Check if user is attempting to connect with connection string
+    if (self.options[CONNECT_SHORT] or self.options[CONNECT_LONG] and
+            self.options[CONNECTION_STRING] is not None):
+        print("Connection string found!")
 
-        if (CERTIFICATE_SHORT or CERTIFICATE_LONG in self.options and
-                KEY_SHORT or KEY_LONG in self.options and
-                RSA_CERT and RSA_KEY in self.options is not None):
-            print("We have a cert/key file!")
+        if (self.options[CERTIFICATE_SHORT] or self.options[CERTIFICATE_LONG] and
+                self.options[KEY_SHORT] or self.options[KEY_LONG] and
+                self.options[RSA_CERT] and self.options[RSA_KEY] is not None):
+            print("\nWe have a cert/key file & connect string! \n Try to connect with those!")
 
         else:
-            print("We don't have a cert/key file")
+            print("\nWe don't have a cert/key file.\nTry to connect just using the string.")
+
+    # Check if user is attempting to connect by providing HostName/DeviceID
+    if (self.options[HOST_SHORT] or self.options[HOST_LONG] and
+            self.options[ID_SHORT] or self.options[ID_LONG] and
+            self.options[HOST_NAME] and self.options[DEVICE_ID] is not None):
+
+        # User attempting to gain access by building connection string
+        print("\nHost Name/Device ID Found\nCheck access key or certificate files")
+
+        if (self.options[ACCESS_KEY_LONG] or self.options[ACCESS_KEY_SHORT] and
+                self.options[ACCESS_KEY] is not None):
+
+            # User provided Access Key and finished out the connection string
+            print("\nAccess key found.  Building connection string...")
+
+        elif (self.options[CERTIFICATE_SHORT] or self.options[CERTIFICATE_LONG] and
+              self.options[KEY_SHORT] or self.options[KEY_LONG] and
+              self.options[RSA_CERT] and self.options[RSA_KEY] is not None):
+
+            # User provided RSA Key and Certificate and wants to connect that way
+            print("\nRSA-Cert & Key Found!\n Building connection string...")
 
 
 # Main method

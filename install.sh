@@ -1,4 +1,4 @@
-printf "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n=-=-=-=-=Uninstalling IoTHub=-=-=-=-"
+printf "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n=-=-=-=-=Uninstalling IoTHub=-=-=-=-\n"
 pip3 uninstall iothub -y
-printf "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=Installing IoTHub again!=-=-=-=-=-"
+printf "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n-=-=-=-=Installing IoTHub again!=-=-=-=-=-\n"
 pip3 install .

@@ -7,9 +7,6 @@ class Device(Base):
     """Check it..."""
 
     def run(self):
-        print('From Device!')
-        print('Woohoo!')
-
         if 'receive' in self.options and self.options["receive"]:
             print("Receive exists and is true!")
             retrieveMessages.retrieve(self)
