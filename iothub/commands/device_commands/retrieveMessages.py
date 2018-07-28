@@ -1,17 +1,15 @@
 import sys
 import time
-import re
+
 import pem
-from cryptography import x509
-from cryptography.hazmat.backends import default_backend
-import iothub_client
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError
+from iothub_client import IoTHubMessageDispositionResult, IoTHubError
+from iothub.commands.strings import *
 
 # HTTP options
 # Because it can poll "after 9 seconds" polls will happen effectively
 # at ~10 seconds.
-# Note that for scalabilty, the default value of minimumPollingTime
+# Note that for scalability, the default value of minimumPollingTime
 # is 25 minutes. For more information, see:
 # https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging
 TIMEOUT = 241000
@@ -30,6 +28,7 @@ RECEIVE_CALLBACKS = 0
 # choose AMQP or AMQP WS as Transport Protocol
 PROTOCOL = IoTHubTransportProvider.AMQP
 
+
 # Connection String Parameters:
 # HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>
 # host_name = Name of the IoT Hub
@@ -37,7 +36,7 @@ PROTOCOL = IoTHubTransportProvider.AMQP
 # SharedAccessKey = Key for one of the Shared Accesses
 # String containing Hostname, Device Id in the format:
 # "HostName=<host_name>;DeviceId=<device_id>;x509=true"
-CONNECTION_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=thumbprintDevice;x509=true"
+# CONNECTION_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=thumbprintDevice;x509=true"
 
 
 # File passed in format: SHA1 Fingerprint=00:00:00:.... (20 Hex passed with it)
@@ -156,11 +155,19 @@ def check_file(file, file_header):
 
 def retrieve(self):
     print("We are in retrieveMessages")
-    # print(self.options)
-    if "-C" or "--connection" in self.options and self.options["-C"] is not None:
-        if "<connection-string>" in self.options:
-            print(self.options["<connection-string>"])
+    print(self.options)
 
+    # Check if one of the connection options is available
+    if CONNECT_SHORT or CONNECT_LONG in self.options and CONNECTION_STRING in self.options is not None:
+        print(self.options[CONNECTION_STRING])
+
+        if (CERTIFICATE_SHORT or CERTIFICATE_LONG in self.options and
+                KEY_SHORT or KEY_LONG in self.options and
+                RSA_CERT and RSA_KEY in self.options is not None):
+            print("We have a cert/key file!")
+
+        else:
+            print("We don't have a cert/key file")
 
 
 # Main method
