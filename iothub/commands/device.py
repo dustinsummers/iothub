@@ -1,6 +1,6 @@
 """The device command"""
-from iothub.commands.device_commands import retrieveMessages
-from .base import Base
+from iothub.commands.device_commands import RetrieveMessages
+from .Base import Base
 
 
 class Device(Base):
@@ -9,7 +9,7 @@ class Device(Base):
     def run(self):
         if 'receive' in self.options and self.options["receive"]:
             print("Receive exists and is true!")
-            retrieveMessages.retrieve(self)
+            RetrieveMessages.retrieve(self)
 
         else:
             print("seems like somethings messed up!")

@@ -4,7 +4,7 @@ import time
 import pem
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessageDispositionResult, IoTHubError
-from iothub.commands.strings import *
+from iothub.commands.Strings import *
 
 # HTTP options
 # Because it can poll "after 9 seconds" polls will happen effectively
@@ -193,7 +193,7 @@ def retrieve(self):
             # User provided RSA Key and Certificate and wants to connect that way
             print("\nRSA-Cert & Key Found!\n Building connection string...")
 
-
+# todo: create actual class and move all methods into it.  Then setup a constructor for this.
 # Main method
 if __name__ == '__main__':
 

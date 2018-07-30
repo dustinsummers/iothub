@@ -3,7 +3,7 @@
 
 from json import dumps
 
-from .base import Base
+from .Base import Base
 
 
 class Hello(Base):

@@ -65,7 +65,7 @@ class RunTests(Command):
             },
             entry_points = {
                 'console_scripts': [
-                'iothub=iothub.cli:main',
+                'iothub=iothub.CLI:main',
                 ],
             },
         #cmdclass = {'test': RunTests},
