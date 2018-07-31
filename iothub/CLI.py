@@ -3,12 +3,12 @@ iothub
 
 Usage:
     iothub hello
-    iothub device receive (-C|--connect) <connection-string>
-    iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key>
-    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key>
-    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key>
-    iothub service send (-t|--text) <text> (-C|--connect) <connection-string>
-    iothub service send (-t|--text) <text> (-H|--host) <host-name> (-N|--access-name) <access-name> (-K|--access-key) <access-key>
+    iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
+    iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key> [--protocol=<protocol>]
+    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+    iothub service send (-t|--text) <text> (-C|--connect) <connection-string> [--protocol=<protocol>]
+    iothub service send (-t|--text) <text> (-H|--host) <host-name> (-N|--access-name) <access-name> (-K|--access-key) <access-key> [--protocol=<protocol>]
 
 
 Options:
@@ -22,6 +22,7 @@ Options:
     -c,              --certificate               RSA Certificate Provided for access to device
     -k,              --key                       RSA Private Key Provided for access to device
     -t,              --text                      Text to send in message
+    --protocol=<protocol>                        Protocol to use. [default: AMQP]
 Help:
     For help using this tool, please refer to the README.md documentation:
     https://github.com/<provide rest of url>
@@ -44,10 +45,8 @@ def main():
     # with a pre-defined class we've already created.
     for (key, value) in options.items():
         if hasattr(iothub.commands, key) and value:
-            print("Claim matches!")
             module = getattr(iothub.commands, key)
             iothub.commands = getmembers(module, isclass)
             command = [command[1] for command in iothub.commands if command[0] != 'Base'][0]
             command = command(options)
-            print("Command to run: %s" % command)
             command.run()

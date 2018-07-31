@@ -31,7 +31,28 @@ TEXT_SHORT = "-t"
 TEXT_LONG = "--text"
 TEXT = "<text>"
 
-# Different argument numbers
-CONNECT_STRING_AND_RSA = 1
-CONNECT_STRING = 2
+# Values for tracking connection type
+CONNECT_STRING_AND_RSA_CODE = 1001
+CONNECT_STRING_CODE = 1002
+
+# Connection String Constants
+HOST_NAME_STR = "HostName="
+DEVICE_ID_STR = "azure-devices.net;DeviceId="
+SHARED_ACCESS_KEY_STR = "SharedAccessKey="
+X509_STR = "x509=true"
+REGEX_X509_STRING = "HostName=.*azure-devices.net;DeviceId=.*x509=true"
+REGEX_CONNECT_STRING = "HostName=.*azure-devices.net;DeviceId=.*SharedAccessKey="
+
+# Certificate file headers
+CERTIFICATE_FILE_HEADER = "-----BEGIN CERTIFICATE-----"
+KEY_FILE_HEADER = "-----BEGIN RSA PRIVATE KEY-----"
+
+# Test Connection
+TEST_CONNECT_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=g/yFqDtb//4rMTKKkr2UL3Oq0XBCaFRaH1uFam5778k="
+TEST_X509_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=thumbprintDevice;x509=true"
+
+
+
+
+
 

@@ -1,4 +1,4 @@
 class RetrieveMessagesTest:
-    def __init__(self, *connect_type, **connect_data):
-        print(connect_type)
-        print(connect_data)
+    def __init__(self, connect_code, *connect_data):
+        print("Connect Code: ", connect_code)
+        print("Connect Data: ", connect_data)

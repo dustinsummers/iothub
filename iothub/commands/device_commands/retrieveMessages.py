@@ -199,7 +199,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) < 2:
         print("Provide Certificate and Key file before proceeding...\n"
-              "python Simulatedx509Device <certificate.pem> <key.pem>")
+              "python Simulated x509Device <certificate.pem> <key.pem>")
         exit()
 
     print("Testing files: %s" % sys.argv)
