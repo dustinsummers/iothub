@@ -1,3 +1,3 @@
-from .Hello import *
-from .Device import *
-from .Service import *
+from .hello import *
+from .device import *
+from .service import *

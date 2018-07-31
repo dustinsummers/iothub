@@ -27,23 +27,27 @@ Help:
     https://github.com/<provide rest of url>
 """
 
-
 from inspect import getmembers, isclass
+
 from docopt import docopt
+
 from . import __version__ as VERSION
 
 
 def main():
     """Main CLI entrypoint."""
     import iothub.commands
+
     options = docopt(__doc__, version=VERSION)
 
     # Here we'll try to dynamically match the command the user is trying to run
     # with a pre-defined class we've already created.
-    for (k, v) in options.items():
-        if hasattr(iothub.commands, k) and v:
-            module = getattr(iothub.commands, k)
+    for (key, value) in options.items():
+        if hasattr(iothub.commands, key) and value:
+            print("Claim matches!")
+            module = getattr(iothub.commands, key)
             iothub.commands = getmembers(module, isclass)
             command = [command[1] for command in iothub.commands if command[0] != 'Base'][0]
             command = command(options)
+            print("Command to run: %s" % command)
             command.run()

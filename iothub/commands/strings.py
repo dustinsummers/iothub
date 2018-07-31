@@ -1,4 +1,7 @@
+# Name of CLI
 CLI_NAME = "iothub"
+
+# Name of different arguments
 DEVICE = "device"
 RECEIVE = "receive"
 SERVICE = "service"
@@ -27,3 +30,8 @@ RSA_KEY = "<RSA-key>"
 TEXT_SHORT = "-t"
 TEXT_LONG = "--text"
 TEXT = "<text>"
+
+# Different argument numbers
+CONNECT_STRING_AND_RSA = 1
+CONNECT_STRING = 2
+
