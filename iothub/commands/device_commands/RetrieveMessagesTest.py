@@ -1,3 +1,5 @@
+import time
+
 from iothub.commands.Strings import *
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessageDispositionResult, IoTHubError
@@ -19,7 +21,99 @@ MESSAGE_TIMEOUT = 10000
 RECEIVE_CONTEXT = 0
 WAIT_COUNT = 5
 RECEIVED_COUNT = 0
-RECEIVED_CALLBACKS = 0
+RECEIVE_CALLBACKS = 0
+
+
+def receive_message_callback(message, counter):
+    global RECEIVE_CALLBACKS
+    message_buffer = message.get_bytearray()
+    size = len(message_buffer)
+    print("Received Message [%d]:" % counter)
+    print(" Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size))
+    map_properties = message.properties()
+    key_value_pair = map_properties.get_internals()
+    print("     Properties: %s" % key_value_pair)
+    counter += 1
+    RECEIVE_CALLBACKS += 1
+    print("     Total calls received: %d" % RECEIVE_CALLBACKS)
+    return IoTHubMessageDispositionResult.ACCEPTED
+
+
+def print_last_message_time(client):
+    try:
+        last_message = client.get_last_message_receive_time()
+        print("Last Message: %s" % time.asctime(time.localtime(last_message)))
+        print("Actual time: %s" % time.asctime())
+    except IoTHubClientError as iothub_client_error:
+        if iothub_client_error.args[0].result == IoTHubClientResult.INDEFINITE_TIME:
+            print("No message received")
+        else:
+            print(iothub_client_error)
+
+
+def client_connect_string(connection_string, protocol):
+    client = IoTHubClient(connection_string, protocol)
+
+    # HTTP Specific Settings
+    if client.protocol == IoTHubTransportProvider.HTTP:
+        client.set_option(TIMEOUT_STR, TIMEOUT)
+        client.set_option(MINIMUM_POLLING_TIME_STR, MINIMUM_POLLING_TIME)
+
+    client.set_option(MESSAGE_TIMEOUT_STR, MESSAGE_TIMEOUT)
+
+    if client.protocol == IoTHubTransportProvider.MQTT:
+        client.set_option(LOGTRACE_STR, 0)
+
+    client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
+
+
+def iothub_client_init(connection_string, certificate, key, protocol):
+    client = IoTHubClient(connection_string, protocol)
+    # client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
+
+    # HTTP specific settings
+    if client.protocol == IoTHubTransportProvider.HTTP:
+        client.set_option("timeout", TIMEOUT)
+        client.set_option("MinimumPollingTime", MINIMUM_POLLING_TIME)
+
+    # set the time until a message times out
+    client.set_option("messageTimeout", MESSAGE_TIMEOUT)
+
+    # this brings in x509 privateKey and certificate
+    client.set_option("x509certificate", str(certificate[0]))
+    client.set_option("x509privatekey", str(key[0]))
+
+    #
+    if client.protocol == IoTHubTransportProvider.MQTT:
+        client.set_option("logtrace", 0)
+
+    print("Setting callback")
+    client.set_message_callback(
+        receive_message_callback, RECEIVE_CONTEXT)
+    return client
+
+
+def client_connect_rsa(connection_string, certificate, key, protocol):
+    try:
+        client = iothub_client_init(connection_string, certificate, key, protocol)
+
+        while True:
+            print("IoTHubClient waiting for commands, press Ctrl-C to exit")
+
+            status_counter = 0
+            while status_counter <= WAIT_COUNT:
+                status = client.get_send_status()
+                print("Send status: %s" % status)
+                time.sleep(10)
+                status_counter += 1
+
+    except IoTHubError as iothub_error:
+        print("Unexpected error %s from IoTHub" % iothub_error)
+        return
+    except KeyboardInterrupt:
+        print("IoTHubClient sample stopped")
+
+    print_last_message_time(client)
 
 
 class RetrieveMessagesTest:
@@ -28,54 +122,16 @@ class RetrieveMessagesTest:
         self.connect_data = connect_data
 
     def connect(self):
+        # connection_string = "\"" + self.connect_data[CONNECT_LONG].strip() + "\""
         connection_string = self.connect_data[CONNECT_LONG]
+        print("Connection String: ", connection_string)
 
         if self.connect_code == CONNECT_STRING_AND_RSA_CODE:
-            self.client_connect_rsa(connection_string,
-                                    self.connect_data[CERTIFICATE_LONG],
-                                    self.connect_data[KEY_LONG],
-                                    self.connect_data[PROTOCOL])
+            client_connect_rsa(connection_string,
+                               self.connect_data[CERTIFICATE_LONG],
+                               self.connect_data[KEY_LONG],
+                               self.connect_data[PROTOCOL])
 
         elif self.connect_code == CONNECT_STRING_CODE:
-            self.client_connect_string(connection_string, self.connect_data[PROTOCOL])
-
-    def client_connect_rsa(self, connection_string, certificate, key, protocol):
-        print("Connection String: ", connection_string)
-        print("Protocol: ", protocol)
-        print(type(connection_string))
-        client = IoTHubClient(connection_string, protocol)
-
-        # HTTP Specific Settings
-        if client.protocol == IoTHubTransportProvider.HTTP:
-            client.set_option(TIMEOUT_STR, TIMEOUT)
-            client.set_option(MINIMUM_POLLING_TIME_STR, MINIMUM_POLLING_TIME)
-
-        # set the time until a message times out
-        client.set_option(MESSAGE_TIMEOUT_STR, MESSAGE_TIMEOUT)
-
-        # this brings in x509 private key and certificate
-        client.set_option(X509_CERTIFICATE_STR, certificate)
-        client.set_options(X509_PRIVATE_KEY_STR, key)
-
-        if client.protocol == IoTHubTransportProvider.MQTT:
-            client.set_option(LOGTRACE_STR, 0)
-
-        client.set_message_callback(self.receive_message_callback, RECEIVE_CONTEXT)
-
-    def client_connect_string(self, connection_string, protocol):
-        # client = IoTHubClient(connection_string, protocol)
-        print("Don't do anything yet...")
-
-    def receive_message_callback(self, message, counter):
-        global RECEIVE_CALLBACKS
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        print("Received Message [%d]:" % counter)
-        print(" Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size))
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print("     Properties: %s" % key_value_pair)
-        counter += 1
-        RECEIVE_CALLBACKS += 1
-        print("     Total calls received: %d" % RECEIVE_CALLBACKS)
-        return IoTHubMessageDispositionResult.ACCEPTED
+            # client_connect_string(connection_string, self.connect_data[PROTOCOL])
+            print("Just wait a minute until we get the other one...")
