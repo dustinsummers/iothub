@@ -30,6 +30,10 @@ RSA_KEY = "<RSA-key>"
 TEXT_SHORT = "-t"
 TEXT_LONG = "--text"
 TEXT = "<text>"
+PROTOCOL = "--protocol"
+PROTOCOL_HTTP = "HTTP"
+PROTOCOL_MQTT = "MQTT"
+PROTOCOL_AMQP = "AMQP"
 
 # Values for tracking connection type
 CONNECT_STRING_CODE = 1001
@@ -42,9 +46,16 @@ DEVICE_ID_STR = "DeviceId="
 SHARED_ACCESS_KEY_STR = "SharedAccessKey="
 X509_STR = "x509=true"
 
+# IoTHub Options
+TIMEOUT_STR = "timeout"
+MINIMUM_POLLING_TIME_STR = "MinimumPollingTime"
+MESSAGE_TIMEOUT_STR = "messageTimeout"
+X509_CERTIFICATE_STR = "x509certificate"
+X509_PRIVATE_KEY_STR = "x509privatekey"
+LOGTRACE_STR = "logtrace"
+
+
 # REGEX for validating correct connection string
-REGEX_TEST_CERT = "%s%s%s%%s%s%s%s" % (HOST_NAME_STR, '.*', HOST_NAME_END, DEVICE_ID_STR, '.*', SHARED_ACCESS_KEY_STR)
-REGEX_TEST_X509 = "%s%s%s%%s%s%s%s" % (HOST_NAME_STR, '.*', HOST_NAME_END, DEVICE_ID_STR, '.*', X509_STR)
 REGEX_X509_STRING = "HostName=.*azure-devices.net;DeviceId=.*;x509=true"
 REGEX_CONNECT_STRING = "HostName=.*azure-devices.net;DeviceId=.*;SharedAccessKey="
 

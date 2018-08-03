@@ -1,5 +1,6 @@
 """The device command"""
 from iothub.commands.device_commands import RetrieveMessagesTest
+from iothub_client import IoTHubTransportProvider
 from iothub.commands.Strings import *
 import re
 from .Base import Base
@@ -69,7 +70,7 @@ def validate_connection_string(connect_string):
         return CONNECT_STRING_CODE
     else:
         print("Invalid Connection String")
-        return None
+        exit()
 
 
 def validate_rsa_cert(rsa_cert_file):
@@ -82,7 +83,8 @@ def validate_rsa_cert(rsa_cert_file):
     if check_rsa_file(rsa_cert_file, CERTIFICATE_FILE_HEADER):
         return pem.parse_file(rsa_cert_file)
     else:
-        return None
+        print("Invalid RSA Cert!")
+        exit()
 
 
 def validate_rsa_key(rsa_key_file):
@@ -95,7 +97,8 @@ def validate_rsa_key(rsa_key_file):
     if check_rsa_file(rsa_key_file, KEY_FILE_HEADER):
         return pem.parse_file(rsa_key_file)
     else:
-        return None
+        print("Invalid RSA Key!")
+        exit()
 
 
 def check_rsa_file(file, file_header):
@@ -112,6 +115,36 @@ def check_rsa_file(file, file_header):
     else:
         print("%s file not formatted correctly." % file)
         return False
+
+
+def get_protocol(protocol_string):
+    """
+    Get the correct protocol from the one provided by the user
+    :param protocol_string: Protocol String:
+            Can either be AQMP, AQMP WS, MQTT, or HTTP
+    :return:
+    """
+    if protocol_string == "HTTP":
+        protocol_type = IoTHubTransportProvider.HTTP
+
+    elif protocol_string == "AMQP":
+        protocol_type = IoTHubTransportProvider.AMQP
+
+    elif protocol_string == "MQTT":
+        protocol_type = IoTHubTransportProvider.MQTT
+
+    elif protocol_string == "AMQP_WS":
+        protocol_type = IoTHubTransportProvider.AMQP_WS
+
+    elif protocol_string == "MQTT_WS":
+        protocol_type = IoTHubTransportProvider.MQTT_WS
+
+    else:
+        print("Unsupported protocol type. Defaulting to AMQP")
+        print("Supported types are: HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS")
+        protocol_type = IoTHubTransportProvider.AMQP
+
+    return protocol_type
 
 
 class Device(Base):
@@ -146,60 +179,59 @@ class Device(Base):
         """
 
         # Check Connection String
+        global connect_data
+        global connect_code
         connect_string = self.options[CONNECTION_STRING]
-        connect_code = None
-
-        # Check if user is attempting to connect with connection string
-        if (self.options[CONNECT_SHORT] or self.options[CONNECT_LONG]
-                and connect_string is not None):
-
-            connect_code = validate_connection_string(connect_string)
 
         # Check if user is wanting to build their connection string
-        elif (self.options[HOST_SHORT] or self.options[HOST_LONG]
-              and self.options[ID_SHORT] or self.options[ID_LONG]
-              and self.options[HOST_NAME] and self.options[DEVICE_ID] is not None):
+        if (self.options[HOST_SHORT] or self.options[HOST_LONG]
+                and self.options[ID_SHORT] or self.options[ID_LONG]
+                and (self.options[HOST_NAME] and self.options[DEVICE_ID]) is not None):
             # See if the access_key exists
             access_key = self.options[ACCESS_KEY]
 
+            # Build connection string with access key
             if access_key is not None:
                 print("Building connection string with Access Key:")
                 connect_string = build_connect_string(self.options[HOST_NAME], self.options[DEVICE_ID],
                                                       self.options[ACCESS_KEY])
                 connect_code = validate_connection_string(connect_string)
 
+            # Build connection string with x509 = true
             elif (self.options[RSA_CERT] is not None
                   and self.options[RSA_KEY] is not None):
                 connect_string = build_rsa_connect_string(self.options[HOST_NAME], self.options[DEVICE_ID])
                 connect_code = validate_connection_string(connect_string)
 
-        # Must have a connection string before proceeding.  Close session if none is provided.
-        else:
-            print("Invalid connection criteria")
-            exit()
+        # Validate the connection codes
+        connect_code = validate_connection_string(connect_string)
 
-        # Check the connection codes.  If just a string, go ahead and setup connection
+        # Get the correct protocol
+        protocol_type = get_protocol(self.options[PROTOCOL])
+
+        # Check the connection codes and get the connection data
         if connect_code == CONNECT_STRING_CODE:
-            print("Valid connection string!")
-            print("Blast off and start the retrieve message process")
-            connect_data = {CONNECT_LONG: connect_string}
-            RetrieveMessagesTest(connect_code, connect_data)
+            connect_data = {CONNECT_LONG: connect_string,
+                            PROTOCOL: protocol_type}
 
-        # If it's RSA Token, validate tokens then set up connection
+        # If it's RSA Token, validate before moving forward
         elif connect_code == CONNECT_STRING_AND_RSA_CODE:
-            print("Valid connection string with RSA")
             # See if RSA variables exist
             rsa_cert = validate_rsa_cert(self.options[RSA_CERT])
             rsa_key = validate_rsa_key(self.options[RSA_KEY])
+            connect_data = {CONNECT_LONG: connect_string,
+                            CERTIFICATE_LONG: rsa_cert,
+                            KEY_LONG: rsa_key,
+                            PROTOCOL: protocol_type}
 
-            # Check if user is also passing in connection string and certificates
-            if rsa_cert and rsa_key is not None:
-                print("\nAttempting connection with connection string and RSA Cert/Keys...")
-                connect_data = {CONNECT_LONG: connect_string,
-                                CERTIFICATE_LONG: rsa_cert,
-                                KEY_LONG: rsa_key}
-                RetrieveMessagesTest(connect_code, connect_data)
+        else:
+            print("We have no other connection codes")
+            exit()
 
-            else:
-                print("Invalid RSA Certificate or Key")
-                exit()
+        ###
+        # Finally launch the message retrieval after gathering up all arguments
+        # Program will not reach this point if any of the values were invalid.
+        ###
+        print("Attempting to connect...")
+        device_retrieve = RetrieveMessagesTest(connect_code, connect_data)
+        device_retrieve.connect()

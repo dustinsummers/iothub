@@ -22,7 +22,7 @@ Options:
     -c,              --certificate               RSA Certificate Provided for access to device
     -k,              --key                       RSA Private Key Provided for access to device
     -t,              --text                      Text to send in message
-    --protocol=<protocol>                        Protocol to use. [default: AMQP]
+    --protocol=<protocol>                        Protocol to use. Can be HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS. [default: AMQP]
 Help:
     For help using this tool, please refer to the README.md documentation:
     https://github.com/<provide rest of url>
