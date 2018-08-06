@@ -59,6 +59,7 @@ def validate_connection_string(connect_string):
         :return: True if it is a valid connection string
     """
     # print("Checking provided connection string")
+    # print(connect_string)
     if re.match(REGEX_X509_STRING, connect_string):
         # print("Valid x509 connection string...")
         return CONNECT_STRING_AND_RSA_CODE

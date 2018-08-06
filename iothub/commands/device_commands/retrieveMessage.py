@@ -27,7 +27,7 @@ def receive_message_callback(message, counter):
     global RECEIVE_CALLBACKS
     message_buffer = message.get_bytearray()
     size = len(message_buffer)
-    print("Received Message [%d]:" % counter)
+    print("\n=-=-=-=-=-\nReceived Message [%d]:" % counter)
     print(" Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size))
     map_properties = message.properties()
     key_value_pair = map_properties.get_internals()
@@ -35,6 +35,7 @@ def receive_message_callback(message, counter):
     counter += 1
     RECEIVE_CALLBACKS += 1
     print("     Total calls received: %d" % RECEIVE_CALLBACKS)
+    print("\n=-=-=-=-=-\n")
     return IoTHubMessageDispositionResult.ACCEPTED
 
 
@@ -96,7 +97,7 @@ def iothub_client_init(connection_string, certificate, key, protocol):
 def client_connect_rsa(connection_string, certificate, key, protocol):
     try:
         client = iothub_client_init(connection_string, certificate, key, protocol)
-        time.sleep(1)
+        time.sleep(.5)
 
     except IoTHubError as iothub_error:
         print("Unexpected error %s from IoTHub" % iothub_error)

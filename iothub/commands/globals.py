@@ -60,7 +60,7 @@ LOGTRACE_STR = "logtrace"
 # REGEX for validating correct connection string
 REGEX_X509_STRING = "HostName=.*azure-devices.net;DeviceId=.*;x509=true"
 REGEX_RETRIEVE_CONNECT_STRING = "HostName=.*azure-devices.net;DeviceId=.*;SharedAccessKey="
-REGEX_SEND_CONNECT_STRING = "HostName=.*azure-devices.net;SharedAccessName=.*;SharedAccessKey="
+REGEX_SEND_CONNECT_STRING = "HostName=.*azure-devices.net;SharedAccessKeyName=.*;SharedAccessKey="
 # Certificate file headers
 CERTIFICATE_FILE_HEADER = "-----BEGIN CERTIFICATE-----"
 KEY_FILE_HEADER = "-----BEGIN RSA PRIVATE KEY-----"
