@@ -1,5 +1,5 @@
 """The device command"""
-from iothub.commands.device_commands import retrieveMessage
+from iothub.commands import service
 from .validateInformation import *
 from .Base import Base
 
@@ -8,7 +8,6 @@ class Device(Base):
     """Handles Device messages as they are received"""
 
     def run(self):
-        print("made it to device")
         if 'receive' in self.options and self.options["receive"]:
             # If receive, parse the self options to determine exact parameters
             self.parse_receive()

@@ -1,16 +1,13 @@
 from .Base import Base
-from iothub.commands.globals import *
 from iothub.commands.service_commands import sendMessage
 from .validateInformation import *
 
 
-class Service(Base):
+class Hub(Base):
     """ Sends Messages from the Cloud to the Device """
-    print("we made it to send")
 
     def run(self):
         if 'send' in self.options and self.options["send"]:
-            print("we made it to send")
             self.parse_send()
 
     def parse_send(self):
