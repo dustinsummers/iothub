@@ -1,6 +1,5 @@
 import time
-
-from iothub.commands.Strings import *
+from iothub.commands.globals import *
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessageDispositionResult, IoTHubError
 
@@ -68,8 +67,9 @@ def client_connect_string(connection_string, protocol):
 
 
 def iothub_client_init(connection_string, certificate, key, protocol):
+    print("Initializing Connection...")
     client = IoTHubClient(connection_string, protocol)
-    # client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
+    client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
 
     # HTTP specific settings
     if client.protocol == IoTHubTransportProvider.HTTP:
@@ -87,7 +87,7 @@ def iothub_client_init(connection_string, certificate, key, protocol):
     if client.protocol == IoTHubTransportProvider.MQTT:
         client.set_option("logtrace", 0)
 
-    print("Setting callback")
+    # print("Setting callback")
     client.set_message_callback(
         receive_message_callback, RECEIVE_CONTEXT)
     return client
@@ -96,16 +96,7 @@ def iothub_client_init(connection_string, certificate, key, protocol):
 def client_connect_rsa(connection_string, certificate, key, protocol):
     try:
         client = iothub_client_init(connection_string, certificate, key, protocol)
-
-        while True:
-            print("IoTHubClient waiting for commands, press Ctrl-C to exit")
-
-            status_counter = 0
-            while status_counter <= WAIT_COUNT:
-                status = client.get_send_status()
-                print("Send status: %s" % status)
-                time.sleep(10)
-                status_counter += 1
+        time.sleep(1)
 
     except IoTHubError as iothub_error:
         print("Unexpected error %s from IoTHub" % iothub_error)
@@ -116,7 +107,7 @@ def client_connect_rsa(connection_string, certificate, key, protocol):
     print_last_message_time(client)
 
 
-class RetrieveMessagesTest:
+class retrieveMessage:
     def __init__(self, connect_code, connect_data):
         self.connect_code = connect_code
         self.connect_data = connect_data
@@ -124,7 +115,7 @@ class RetrieveMessagesTest:
     def connect(self):
         # connection_string = "\"" + self.connect_data[CONNECT_LONG].strip() + "\""
         connection_string = self.connect_data[CONNECT_LONG]
-        print("Connection String: ", connection_string)
+        # print("Connection String: ", connection_string)
 
         if self.connect_code == CONNECT_STRING_AND_RSA_CODE:
             client_connect_rsa(connection_string,
@@ -132,6 +123,5 @@ class RetrieveMessagesTest:
                                self.connect_data[KEY_LONG],
                                self.connect_data[PROTOCOL])
 
-        elif self.connect_code == CONNECT_STRING_CODE:
-            # client_connect_string(connection_string, self.connect_data[PROTOCOL])
-            print("Just wait a minute until we get the other one...")
+        elif self.connect_code == CONNECT_RETRIEVE_STRING_CODE:
+            client_connect_string(connection_string, self.connect_data[PROTOCOL])

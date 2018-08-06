@@ -1,2 +1,1 @@
-from .RetrieveMessages import *
-from .RetrieveMessagesTest import *
+from .retrieveMessage import *

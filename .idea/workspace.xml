@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/iothub/commands/device.py" line="89" />
+    <bookmark url="file://$PROJECT_DIR$/iothub/commands/device.py" line="6" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfaef9cc-fdd2-4be7-bff5-fc7c4fc6cf0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/iothub/commands/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/Base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/device_commands/RetrieveMessagesTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/device_commands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device_commands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/service_commands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/service_commands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/commands/strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/globals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/test.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,24 +41,24 @@
           <entry key="PKG-INFO" value="1" />
           <entry key="cfg" value="4" />
           <entry key="in" value="3" />
-          <entry key="py" value="63" />
+          <entry key="py" value="72" />
           <entry key="rst" value="4" />
-          <entry key="sh" value="5" />
+          <entry key="sh" value="6" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="1" />
+          <entry key="Bash" value="2" />
           <entry key="PLAIN_TEXT" value="17" />
-          <entry key="Python" value="63" />
+          <entry key="Python" value="72" />
           <entry key="ReST" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="25" />
-          <entry key="py" value="28693" />
+          <entry key="dummy" value="32" />
+          <entry key="py" value="28761" />
           <entry key="rst" value="333" />
           <entry key="sh" value="183" />
           <entry key="txt" value="64" />
@@ -57,8 +67,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="81" />
-          <entry key="PLAIN_TEXT" value="191" />
-          <entry key="Python" value="28693" />
+          <entry key="PLAIN_TEXT" value="198" />
+          <entry key="Python" value="28761" />
           <entry key="ReST" value="333" />
         </counts>
       </usages-collector>
@@ -73,15 +83,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iothub/commands/service_commands/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="52" column="211" selection-start-line="52" selection-start-column="211" selection-end-line="52" selection-end-column="211" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iothub/commands/device.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2533">
-              <caret line="149" column="12" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
+            <state relative-caret-position="606">
+              <caret line="90" column="14" lean-forward="true" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="15" />
               <folding>
                 <element signature="e#25#84#0" expanded="true" />
               </folding>
@@ -89,55 +124,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iothub/commands/Base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iothub/commands/hello.py">
+        <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="459">
+              <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
               <folding>
-                <element signature="e#27#49#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py">
+        <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iothub/commands/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+              <caret column="7" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -160,6 +163,8 @@
       <find>device</find>
       <find>CLaim</find>
       <find>Base</find>
+      <find>RetrieveMessage</find>
+      <find>RetrieveMessages</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,27 +184,32 @@
         <option value="$PROJECT_DIR$/iothub.egg-info/SOURCES.txt" />
         <option value="$PROJECT_DIR$/iothub.egg-info/entry_points.txt" />
         <option value="$PROJECT_DIR$/Setup.py" />
-        <option value="$PROJECT_DIR$/iothub/commands/__init__.py" />
         <option value="$PROJECT_DIR$/iothub/commands/device_commands/__init__.py" />
         <option value="$PROJECT_DIR$/README.rst" />
         <option value="$PROJECT_DIR$/iothub/commands/device_commands/RetrieveMessages.py" />
         <option value="$PROJECT_DIR$/installDev.sh" />
         <option value="$PROJECT_DIR$/testScripts.txt" />
-        <option value="$PROJECT_DIR$/test.sh" />
         <option value="$PROJECT_DIR$/install.sh" />
         <option value="$PROJECT_DIR$/iothub/commands/Strings.py" />
         <option value="$PROJECT_DIR$/iothub/CLI.py" />
-        <option value="$PROJECT_DIR$/iothub/commands/device.py" />
         <option value="$PROJECT_DIR$/../Azure_IoT/TestScripts/SendCloudToDeviceMessage.py" />
         <option value="$PROJECT_DIR$/../Azure_IoT/TestScripts/Simulatedx509Device.py" />
         <option value="$PROJECT_DIR$/iothub/commands/device_commands/RetrieveMessagesTest.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/globals.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/__init__.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/validateInformation.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/service.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/service_commands/__init__.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py" />
+        <option value="$PROJECT_DIR$/iothub/commands/device.py" />
+        <option value="$PROJECT_DIR$/test.sh" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="62" />
-    <option name="y" value="13" />
-    <option name="width" value="979" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="2" />
+    <option name="width" value="1415" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -301,7 +311,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -335,7 +345,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/iothub/commands/Strings.py</url>
+          <url>file://$PROJECT_DIR$/iothub/commands/globals.py</url>
           <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -352,24 +362,11 @@
     <entry file="file://$PROJECT_DIR$/iothub.egg-info/PKG-INFO" />
     <entry file="file://$PROJECT_DIR$/iothub.egg-info/requires.txt" />
     <entry file="file://$PROJECT_DIR$/iothub.egg-info/SOURCES.txt" />
-    <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/iothub/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.cfg">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iothub/__main__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -378,25 +375,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.rst">
       <provider selected="true" editor-type-id="restructured-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/hello.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#27#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testScripts.txt" />
     <entry file="file://$PROJECT_DIR$/install.sh">
@@ -420,40 +400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/strings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/device.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2533">
-          <caret line="149" column="12" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
-          <folding>
-            <element signature="e#25#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="30" lean-forward="true" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Azure_IoT/TestScripts/SendCloudToDeviceMessage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
@@ -468,26 +414,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/RetrieveMessagesTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="89" column="29" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
+        <state relative-caret-position="374">
+          <caret line="106" column="30" lean-forward="true" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py">
+    <entry file="file://$PROJECT_DIR$/iothub/commands/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="51">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#1982#2021#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -495,6 +455,87 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/validateInformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="147" column="24" selection-start-line="147" selection-start-column="24" selection-end-line="147" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#27#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/service_commands/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/device.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="90" column="14" lean-forward="true" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="15" />
+          <folding>
+            <element signature="e#25#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="211" selection-start-line="52" selection-start-column="211" selection-end-line="52" selection-end-column="211" />
         </state>
       </provider>
     </entry>
