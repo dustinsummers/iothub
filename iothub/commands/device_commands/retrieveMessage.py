@@ -51,50 +51,7 @@ def print_last_message_time(client):
             print(iothub_client_error)
 
 
-def client_connect_string(connection_string, protocol):
-    client = IoTHubClient(connection_string, protocol)
-
-    # HTTP Specific Settings
-    if client.protocol == IoTHubTransportProvider.HTTP:
-        client.set_option(TIMEOUT_STR, TIMEOUT)
-        client.set_option(MINIMUM_POLLING_TIME_STR, MINIMUM_POLLING_TIME)
-
-    client.set_option(MESSAGE_TIMEOUT_STR, MESSAGE_TIMEOUT)
-
-    if client.protocol == IoTHubTransportProvider.MQTT:
-        client.set_option(LOGTRACE_STR, 0)
-
-    client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-
-def iothub_client_init(connection_string, certificate, key, protocol):
-    print("Initializing Connection...")
-    client = IoTHubClient(connection_string, protocol)
-    client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-    # HTTP specific settings
-    if client.protocol == IoTHubTransportProvider.HTTP:
-        client.set_option("timeout", TIMEOUT)
-        client.set_option("MinimumPollingTime", MINIMUM_POLLING_TIME)
-
-    # set the time until a message times out
-    client.set_option("messageTimeout", MESSAGE_TIMEOUT)
-
-    # this brings in x509 privateKey and certificate
-    client.set_option("x509certificate", str(certificate[0]))
-    client.set_option("x509privatekey", str(key[0]))
-
-    #
-    if client.protocol == IoTHubTransportProvider.MQTT:
-        client.set_option("logtrace", 0)
-
-    # print("Setting callback")
-    client.set_message_callback(
-        receive_message_callback, RECEIVE_CONTEXT)
-    return client
-
-
-def client_connect_rsa(connection_string, certificate, key, protocol):
+def client_connect(connection_string, certificate, key, protocol):
     try:
         client = iothub_client_init(connection_string, certificate, key, protocol)
         time.sleep(.5)
@@ -108,6 +65,34 @@ def client_connect_rsa(connection_string, certificate, key, protocol):
     print_last_message_time(client)
 
 
+def iothub_client_init(connection_string, protocol, certificate, key):
+    print("Initializing Connection...")
+    client = IoTHubClient(connection_string, protocol)
+
+    # HTTP specific settings
+    if client.protocol == IoTHubTransportProvider.HTTP:
+        client.set_option(TIMEOUT_STR, TIMEOUT)
+        client.set_option(MINIMUM_POLLING_TIME_STR, MINIMUM_POLLING_TIME)
+
+    # set the time until a message times out
+    client.set_option(MESSAGE_TIMEOUT_STR, MESSAGE_TIMEOUT)
+
+    print("Checking if key or cert are not none: ", (certificate is not None and key is not None))
+    # this brings in x509 privateKey and certificate
+    if certificate is not None and key is not None:
+        client.set_option(X509_CERTIFICATE_STR, str(certificate[0]))
+        client.set_option(X509_PRIVATE_KEY_STR, str(key[0]))
+
+    #
+    if client.protocol == IoTHubTransportProvider.MQTT:
+        client.set_option(LOGTRACE_STR, 0)
+
+    # print("Setting callback")
+    client.set_message_callback(
+        receive_message_callback, RECEIVE_CONTEXT)
+    return client
+
+
 class retrieveMessage:
     def __init__(self, connect_code, connect_data):
         self.connect_code = connect_code
@@ -116,13 +101,13 @@ class retrieveMessage:
     def connect(self):
         # connection_string = "\"" + self.connect_data[CONNECT_LONG].strip() + "\""
         connection_string = self.connect_data[CONNECT_LONG]
-        # print("Connection String: ", connection_string)
+        print("Connection String: ", connection_string)
 
         if self.connect_code == CONNECT_STRING_AND_RSA_CODE:
-            client_connect_rsa(connection_string,
-                               self.connect_data[CERTIFICATE_LONG],
-                               self.connect_data[KEY_LONG],
-                               self.connect_data[PROTOCOL])
+            client_connect(connection_string,
+                           self.connect_data[PROTOCOL],
+                           self.connect_data[CERTIFICATE_LONG],
+                           self.connect_data[KEY_LONG])
 
         elif self.connect_code == CONNECT_RETRIEVE_STRING_CODE:
-            client_connect_string(connection_string, self.connect_data[PROTOCOL])
+            client_connect(connection_string, self.connect_data[PROTOCOL], None, None)
