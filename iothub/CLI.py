@@ -2,7 +2,6 @@
 iothub
 
 Usage:
-    iothub hello
     iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
     iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
     iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key> [--protocol=<protocol>]

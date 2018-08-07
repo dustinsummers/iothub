@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfaef9cc-fdd2-4be7-bff5-fc7c4fc6cf0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SendCloudToDeviceMessage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/globals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/hello.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/service_commands/sendMessage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iothub/commands/validateInformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/commands/validateInformation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/test.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iothub/CLI.py" beforeDir="false" afterPath="$PROJECT_DIR$/iothub/CLI.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +29,7 @@
           <entry key="cfg" value="6" />
           <entry key="gitignore" value="2" />
           <entry key="in" value="5" />
-          <entry key="py" value="118" />
+          <entry key="py" value="119" />
           <entry key="rst" value="5" />
           <entry key="sh" value="10" />
           <entry key="txt" value="5" />
@@ -52,7 +39,7 @@
         <counts>
           <entry key="Bash" value="6" />
           <entry key="PLAIN_TEXT" value="23" />
-          <entry key="Python" value="118" />
+          <entry key="Python" value="119" />
           <entry key="ReST" value="5" />
         </counts>
       </usages-collector>
@@ -61,7 +48,7 @@
           <entry key="dummy" value="42" />
           <entry key="gitignore" value="56" />
           <entry key="md" value="195" />
-          <entry key="py" value="32426" />
+          <entry key="py" value="32427" />
           <entry key="rst" value="396" />
           <entry key="sh" value="936" />
           <entry key="txt" value="64" />
@@ -72,7 +59,7 @@
           <entry key="Bash" value="834" />
           <entry key="Markdown" value="195" />
           <entry key="PLAIN_TEXT" value="264" />
-          <entry key="Python" value="32426" />
+          <entry key="Python" value="32427" />
           <entry key="ReST" value="396" />
         </counts>
       </usages-collector>
@@ -86,7 +73,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="56" lean-forward="true" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iothub/commands/device_commands/retrieveMessage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1700">
@@ -98,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -110,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#2039#2078#0" expanded="true" />
               </folding>
@@ -191,7 +187,6 @@
         <option value="$PROJECT_DIR$/../Azure_IoT/TestScripts/Simulatedx509Device.py" />
         <option value="$PROJECT_DIR$/iothub/commands/device_commands/RetrieveMessagesTest.py" />
         <option value="$PROJECT_DIR$/iothub/commands/service_commands/__init__.py" />
-        <option value="$PROJECT_DIR$/iothub/CLI.py" />
         <option value="$PROJECT_DIR$/iothub/commands/globals.py" />
         <option value="$PROJECT_DIR$/iothub/commands/validateInformation.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -205,6 +200,7 @@
         <option value="$PROJECT_DIR$/README.rst" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/iothub/CLI.py" />
       </list>
     </option>
   </component>
@@ -302,7 +298,7 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" sideWeight="0.50149256" side_tool="true" weight="0.25714287" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49850747" visible="true" weight="0.1624161" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49850747" visible="true" weight="0.1624161" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -423,16 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#2039#2078#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Azure_IoT/TestScripts/SendCloudToDeviceMessage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -475,13 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="56" lean-forward="true" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iothub/commands/device.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -489,13 +468,6 @@
           <folding>
             <element signature="e#25#84#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -536,6 +508,30 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/commands/service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="56" lean-forward="true" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iothub/CLI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#2039#2078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
     </entry>

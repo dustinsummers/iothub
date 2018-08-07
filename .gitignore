@@ -1,3 +1,4 @@
+.idea
 SendCloudToDeviceMessage.py
 test.sh
 new-device.cert.pem
