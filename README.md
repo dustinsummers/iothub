@@ -57,23 +57,57 @@ iothub service send -m "Test 1" -C "HostName=<iothubname>.azure-devices.net;Shar
 ```
 
 ### Usage
- iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
+iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
+
 iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+
 iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key> [--protocol=<protocol>]
+
 iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+
 iothub service send (-m|--message) <message> (-C|--connect) <connection-string> (-i|--id) <device-id> [--protocol=<protocol>]
+
 iothub service send (-m|--message) <message> (-H|--host) <host-name> (-N|--access-name) <access-name> (-K|--access-key) <access-key> (-i|--id) <device-id> [--protocol=<protocol>]
 
 Options:
+
 -C,              --connect                   Entire connection string (see example below for sample connection string)
+
 -H,              --host                      Hostname for configuration of ConnectionString
+
 -N,              --access-name               Shared Access Key Name for configuration of connection String
+
 -K,              --access-key                Shared Access Key for configuration of Connection String
+
 -i,              --id                        Device ID for configuration of Connection String
+
 -h,              --help                      Show this screen.
+
 -V,              --version                   Show version.
+
 -c,              --certificate               RSA Certificate Provided for access to device
+
 -k,              --key                       RSA Private Key Provided for access to device
+
 -m,              --message                   Message to send to device
+
 --protocol=<protocol>                        Protocol to use. Can be HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS. [default: AMQP]
 
+## Built With
+[Microsoft Azure](https://portal.azure.com)
+
+[Python Azure SDK](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)
+
+[Python](https://www.python.org/downloads)
+
+[DocOpt](https://docopt.org)
+
+## Versioning
+For the versions available, see the [tags on this repository](https://github.com/dustinsummers/iothub/tags).
+
+## Authors
+BADROBOT Team Members:
+
+Matt Gorman
+
+Dustin Summers
