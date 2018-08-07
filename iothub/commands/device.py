@@ -1,11 +1,17 @@
 """The device command"""
-from iothub.commands import service
+from iothub.commands.device_commands import retrieveMessage
 from .validateInformation import *
 from .Base import Base
 
 
 class Device(Base):
-    """Handles Device messages as they are received"""
+    """
+        Handles Device Actions: Receive (more to come)
+
+        Receive: Check Device Message Queue to see if there any new messages, and display those to user.
+                 At this time, this is a one time check, and will need to be run each time to see if new messages have arrived.
+                 In future, will write new action to "listen" for when new messages arrive
+    """
 
     def run(self):
         if 'receive' in self.options and self.options["receive"]:
@@ -13,7 +19,8 @@ class Device(Base):
             self.parse_receive()
 
         else:
-            print("seems like somethings messed up!")
+            print("Unrecognized command")
+            exit()
 
     def parse_receive(self):
         """

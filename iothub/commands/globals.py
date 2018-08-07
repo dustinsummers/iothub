@@ -1,3 +1,7 @@
+"""
+List of global strings/variables used throughout code
+"""
+
 # Name of CLI
 CLI_NAME = "iothub"
 
@@ -55,7 +59,6 @@ MESSAGE_TIMEOUT_STR = "messageTimeout"
 X509_CERTIFICATE_STR = "x509certificate"
 X509_PRIVATE_KEY_STR = "x509privatekey"
 LOGTRACE_STR = "logtrace"
-
 
 # REGEX for validating correct connection string
 REGEX_X509_STRING = "HostName=.*azure-devices.net;DeviceId=.*;x509=true"

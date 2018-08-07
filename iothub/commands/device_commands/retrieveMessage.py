@@ -24,6 +24,12 @@ RECEIVE_CALLBACKS = 0
 
 
 def receive_message_callback(message, counter):
+    """
+    Once a message is received, this method is called
+    :param message: Message received from cloud service
+    :param counter: Count of the number message it is
+    :return: Return to the service that he messages were accepted
+    """
     global RECEIVE_CALLBACKS
     message_buffer = message.get_bytearray()
     size = len(message_buffer)
@@ -54,7 +60,7 @@ def print_last_message_time(client):
 def client_connect(connection_string, certificate, key, protocol):
     try:
         client = iothub_client_init(connection_string, certificate, key, protocol)
-        time.sleep(.5)
+        time.sleep(1)
 
     except IoTHubError as iothub_error:
         print("Unexpected error %s from IoTHub" % iothub_error)
@@ -77,7 +83,6 @@ def iothub_client_init(connection_string, protocol, certificate, key):
     # set the time until a message times out
     client.set_option(MESSAGE_TIMEOUT_STR, MESSAGE_TIMEOUT)
 
-    print("Checking if key or cert are not none: ", (certificate is not None and key is not None))
     # this brings in x509 privateKey and certificate
     if certificate is not None and key is not None:
         client.set_option(X509_CERTIFICATE_STR, str(certificate[0]))

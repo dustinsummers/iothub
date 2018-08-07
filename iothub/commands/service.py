@@ -4,39 +4,58 @@ from .validateInformation import *
 
 
 class Hub(Base):
-    """ Sends Messages from the Cloud to the Device """
+    """
+        Handles Service Actions: Send (more to come)
+
+        Send: Send a message to a devices message queue
+    """
 
     def run(self):
         if 'send' in self.options and self.options["send"]:
             self.parse_send()
 
+        else:
+            print("Unrecognized command")
+            exit()
+
     def parse_send(self):
         """
         Parse values received to craft appropriate message to send to Device
-        The following are required for a connection:
+        The following are required to send a message from the service to the device:
+
         1) Connection String
-            a) Host Name
-            b) Shared Access Key Name
-            c) Shared Access Key (Key for the above name)
+            a) Host Name (name of the IoTHub Service)
+            b) Shared Access Key Name (Name of the Shared Access holder)
+            c) Shared Access Key (Key for the above Shared Access name)
+
+            --- SAMPLE CONNECTION_STRING ---
+            "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=<access-name>;SharedAccessKey=<access=key>"
+
         2) Transfer Protocol
             a) AMQP or AMQP_WS (Ports 5671 or 443)
             b) MQTT or MQTT_WS (Ports 8883 or 443)
             c) HTTP (Port 443)
-        3) Message to Send
-        4) Device to send message to
-            SAMPLE CONNECTION_STRING:
-            "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=<access-name>;SharedAccessKey=<access=key>"
+
+        3) Message to Send to device
+
+        4) Name of device to send message to
+
             :return:
         """
         global connect_data
+
+        # Set the connect string
         connect_string = self.options[CONNECTION_STRING]
 
-        # Check if user is wanting to build their connection string
+        # Check if user is wanting to build their connection string to check if there are values
+        # in the arguments passed via command line
         if (self.options[HOST_SHORT] or self.options[HOST_LONG]
                 and self.options[ACCESS_NAME_LONG] or self.options[ACCESS_NAME_SHORT]
                 and self.options[ACCESS_KEY_LONG] or self.options[ACCESS_KEY_SHORT]
-                and (self.options[HOST_NAME] and self.options[ACCESS_NAME] and self.options[ACCESS_KEY]) is not None):
-            # Create connection string
+                and (self.options[HOST_NAME] and self.options[ACCESS_NAME]
+                     and self.options[ACCESS_KEY]) is not None):
+
+            # Create connection string based on criteria above
             connect_string = build_connect_string(HOST_NAME_STR, self.options[HOST_NAME],
                                                   SHARED_ACCESS_NAME_STR, self.options[ACCESS_NAME],
                                                   SHARED_ACCESS_KEY_STR, self.options[ACCESS_KEY])
@@ -51,6 +70,8 @@ class Hub(Base):
         device = self.options[DEVICE_ID]
 
         # Check the connection code and get the connection data
+        # Connect_data is a dictionary of all values passed in via command line
+        # and formatted correctly for Azure client
         if connect_code == CONNECT_SEND_STRING_CODE:
             connect_data = {CONNECT_LONG: connect_string,
                             PROTOCOL: protocol_type,
@@ -62,7 +83,7 @@ class Hub(Base):
             exit()
 
         ###
-        # Finally launch the message send after gathering up all arguments
+        # Pass information to the sendMessage command after validating and formatting information
         # Program will not reach this point if any of the values were invalid.
         ###
         print("Attempting to connect...")

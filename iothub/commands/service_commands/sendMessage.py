@@ -1,9 +1,5 @@
-import sys
-import random
-import iothub_service_client
-import iothub_client
-from iothub_client import IoTHubTransportProvider
 from iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
+
 from iothub.commands.globals import *
 
 OPEN_CONTEXT = 0
@@ -31,6 +27,8 @@ def send_device_message(connection_string, protocol, device_id, message_str):
     :param message_str: Message to send to device)
     :return:
     """
+    # Todo: Implement ability to send messages using different protocols
+    # Cannot find any documentation on how to do this...
     try:
         iothub_messaging = IoTHubMessaging(connection_string)
         iothub_messaging.open(open_complete_callback, OPEN_CONTEXT)
@@ -68,6 +66,9 @@ def send_device_message(connection_string, protocol, device_id, message_str):
 
 
 class sendMessage:
+    """
+        Class to control sending of messages
+    """
     def __init__(self, connect_code, connect_data):
         self.connect_code = connect_code
         self.connect_data = connect_data

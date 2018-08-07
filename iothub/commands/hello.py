@@ -1,8 +1,10 @@
-"""The hello command."""
+"""
+Prints out all options passed via command line
+Used for debugging purposes
+"""
 
 
 from json import dumps
-
 from .Base import Base
 
 

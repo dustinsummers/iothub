@@ -1,1 +1,5 @@
 SendCloudToDeviceMessage.py
+test.sh
+new-device.cert.pem
+new-device.key.pem
+hello.py
