@@ -69,6 +69,7 @@ class sendMessage:
     """
         Class to control sending of messages
     """
+
     def __init__(self, connect_code, connect_data):
         self.connect_code = connect_code
         self.connect_data = connect_data

@@ -16,30 +16,82 @@ If you don't have python, install it here: [python.org](https://www.python.org/d
 
 Also, you will need information for the various IoT Hub Devices/Service that you will be interacting with.  We are working on getting Fortego Test Devices set up, and test scripts will be written catered to those devices for testing/development/pentesting purposes.
 
-### Installing
-On a Windows machine, open up a command prompt and simply run the two following commands:
-```
-pip install azure-iothub-device-client
-pip install azure-iothub-service-client
+## Installation
+
+First download or clone this repository to a folder of your choice.
+
+To clone, you will need to have established SSH certificates with Fortego Gitlab.  You can find those steps here:
+[Install SSH Certs](https://docs.gitlab.com/ee/ssh/)
+
+```bash
+git clone git@git.fortegodev.com:BADROBOT/iothub.git
 ```
 
-Navigate to the iothub folder, and run the install.sh file
+### Installing on Windows
+On a Windows machine, open up a command prompt and navigate to the iothub\installation\windows folder.
 
+Run the following setup file...
+```bash
+setup.bat
 ```
-./install.sh
+
+Followed by the installation file
+```bash
+install.bat
 ```
+Which will produce the following output:
+
+```text
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=-=Uninstalling IoTHub=-=-=-=-
+Skipping iothub as it is not installed
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=Installing IoTHub again!=-=-=-=-=-
+Processing c:\users\fortegoadmin\desktop\iothub-cli
+Requirement already satisfied: docopt in c:\users\fortegoadmin\appdata\local\programs\python\python36\lib\site-packages (from iothub==1.0.0) (0.6.2)
+Installing collected packages: iothub
+ Running setup.py install for iothub: started
+   Running setup.py install for iothub: finished with status 'done'
+Successfully installed iothub-1.0.0
+```
+
 This will install the iothub cli.  Test it by running the following command:
 
-```
+```bash
 iothub
 ```
 And it will print out a list of the available commands you can use.
 
-And you are good to go.
+### Installing on Mac
+On a MAC, open up a terminal and navigate to the iothub\installation\mac folder
 
-For other operating systems, follow the instructions located at: [azure-iot-sdk-python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md).
+Run the following commands to run the setup script
+```bash
+./setup.sh
+```
 
-**Note**: At this time(08/2018), Azure IoTHub is still very much in development.  Support for SDK versions on the Mac/Linux have known issues.  For starting out, it is best (and easiest) to run this on a Windows machine... I know...(*grumble grumble*).  There are instructions for building on a Mac/Linux, but few have been successful in getting it working properly.  There is a patch currently in the works to get those working.  In general, there are a few issues, but they are actively being worked on.  [azure-iot-sdk-python issues](https://github.com/Azure/azure-iot-sdk-python/issues/158).
+This script installs the Azure IoTHub SDK to your system, along with all other necessary files.
+It takes ~3 minutes for it to run through everything, so grab some coffee.
+
+Once it's complete, run the installation file
+```bash
+./install.sh
+```
+
+This will install the iothub cli.  Test it by running the following command:
+
+```bash
+iothub
+```
+
+And it will print out a list of the available commands you can use.
+
+***Note:***  Mac installation is still not 100%.  Currently working through errors that are popping up with the version of boost.
+Unsure if this is a fix on Microsoft's end or something we can do.
+
+###Installing on Linux
+For Linux operating systems, follow the instructions located at: [azure-iot-sdk-python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md).
+
 
 ### Examples
 The following are the commands to interact with iothub, as well as some examples below
