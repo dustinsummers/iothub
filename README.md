@@ -63,6 +63,7 @@ iothub
 And it will print out a list of the available commands you can use.
 
 ### Installing on Mac
+
 On a MAC, open up a terminal and navigate to the iothub\installation\mac folder
 
 Run the following commands to run the setup script

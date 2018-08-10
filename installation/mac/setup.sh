@@ -34,11 +34,15 @@ git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
 cd azure-iot-sdk-python
 
 printf "\n\n=-=-= Building C Submodule for xCode =-=-=\n\n"
+#cd c
+#mkdir cmake
+#cd cmake
+#cmake -G Xcode ..
 cd c
 mkdir cmake
 cd cmake
-cmake -G Xcode ..
-
+cmake -DOPENSSL_ROOT_DIR:PATH=/usr/local/opt/openssl ..
+cmake --build .
 
 printf "\n\n=-=-= Building Python SDK =-=-=\n\n"
 cd ../../build_all/mac
