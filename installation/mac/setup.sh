@@ -4,6 +4,7 @@ printf "\n=-=-=-=-=-=-=-=- Setting up IoTHub Environment -=-=-=-=-=-\n"
 printf "\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-====-=--=-=-=-=-=-\n"
 printf "\n=-=-=-=-=-=-=-=- Ensuring we have the latest Python 3 =-=-=-=-=-=\n"
 brew install python3
+conda install python=3.7
 brew upgrade python3
 sudo -H pip3 uninstall azure_iothub_service_client-1.4.2-py3-none-any.whl -y
 sudo -H pip3 uninstall azure_iothub_device_client-1.4.2-py3-none-any.whl -y

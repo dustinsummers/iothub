@@ -64,6 +64,11 @@ And it will print out a list of the available commands you can use.
 
 ### Installing on Mac
 
+Note: If you have ANACONDA installed, you may need to disable the PATH variable pointing prior to doing the 
+setup.  Microsoft's scripts look for particular folders in pythons main directory that are not present in anaconda's
+version, and it will cause their setup script to crash.  Simply go into the .bashprofile file and put a '#' in front of 
+the path variable (if it contains a path to anaconda)
+
 On a MAC, open up a terminal and navigate to the iothub\installation\mac folder
 
 Run the following commands to run the setup script
