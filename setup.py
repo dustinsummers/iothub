@@ -1,5 +1,8 @@
 """Packaging settings."""
+import warnings
 
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore")
 from codecs import open
 from os.path import abspath, dirname, join
 from subprocess import call
