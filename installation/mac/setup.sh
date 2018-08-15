@@ -65,7 +65,7 @@ sudo -H pip3 install release_service_client/dist/azure_iothub_service_client-1.4
 
 printf "\n=-=-=Cleaning Up=-=-="
 cd ../../../..
-#rm -rf SDK
+rm -rf SDK
 ls -al
 printf "\n=-=-=Finished=-=-="
 
