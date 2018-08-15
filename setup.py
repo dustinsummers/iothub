@@ -1,8 +1,4 @@
 """Packaging settings."""
-import warnings
-
-with warnings.catch_warnings():
-    warnings.filterwarnings("ignore")
 from codecs import open
 from os.path import abspath, dirname, join
 from subprocess import call
@@ -41,6 +37,7 @@ class RunTests(Command):
         author='Dustin Summers',
         author_email='dustin.summers@fortegollc.com',
         license='UNLICENSE',
+        include_package_data=True,
         classifiers=[
             'Intended Audience :: Developers/Hackers',
             'Topic :: Utilities',

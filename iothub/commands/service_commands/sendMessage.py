@@ -1,5 +1,6 @@
 from iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
 
+
 from iothub.commands.globals import *
 
 OPEN_CONTEXT = 0
