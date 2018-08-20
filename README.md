@@ -69,17 +69,15 @@ setup.  Microsoft's scripts look for particular folders in pythons main director
 version, and it will cause their setup script to crash.  Simply go into the .bashprofile file and put a '#' in front of 
 the path variable (if it contains a path to anaconda)
 
-On a MAC, open up a terminal and navigate to the iothub\installation\mac folder
+On a MAC, open up a terminal and navigate to the iothub/installation/mac folder
 
-Run the following commands to run the setup script
+Run the setup script, which will install the pip azure iothub packages onto your system.
 ```bash
 ./setup.sh
 ```
 
-This script installs the Azure IoTHub SDK to your system, along with all other necessary files.
-It takes ~3 minutes for it to run through everything, so grab some coffee.
 
-Once it's complete, run the installation file
+Once it's complete, run the installation file, which will install iothub onto your platform
 ```bash
 ./install.sh
 ```
@@ -92,11 +90,31 @@ iothub
 
 And it will print out a list of the available commands you can use.
 
-***Note:***  Mac installation is still not 100%.  Currently working through errors that are popping up with the version of boost.
-Unsure if this is a fix on Microsoft's end or something we can do.
 
 ###Installing on Linux
-For Linux operating systems, follow the instructions located at: [azure-iot-sdk-python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md).
+On Linux, open up a terminal and navigate to the iothub/installation/linux folder
+
+Run the following commands to run the setup script.
+This script takes ~3 minutes, as it needs to compile the entire 'Azure IoT HubC' SDK onto your system.
+```bash
+./setup.sh
+```
+
+Once it's complete, run the installation file, which will install iothub onto your platform
+```bash
+./install.sh
+```
+
+This will install the iothub cli.  Test it by running the following command:
+
+```bash
+iothub
+```
+
+And it will print out a list of the available commands you can use.
+
+**Note**: Due to the various configurations of Linux systems, this may not work for all.  This was tested
+on a virtual machine running latest version of Kali as of today (08/20/2018)
 
 
 ### Examples
