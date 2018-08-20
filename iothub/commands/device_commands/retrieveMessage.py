@@ -108,7 +108,6 @@ class retrieveMessage:
         self.connect_data = connect_data
 
     def connect(self):
-        # connection_string = "\"" + self.connect_data[CONNECT_LONG].strip() + "\""
         connection_string = self.connect_data[CONNECT_LONG]
         print("Connection String: ", connection_string)
 
