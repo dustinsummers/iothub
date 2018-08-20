@@ -3,8 +3,6 @@ exclude .gitignore
 exclude .coverage
 include README.rst
 include setup.cfg
-include iothub_client.so
-include iothub_service_client.so
 prune .cache
 prune .git
 prune build

@@ -1,6 +1,3 @@
-from iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
-
-
 from iothub.commands.globals import *
 
 OPEN_CONTEXT = 0
@@ -18,18 +15,18 @@ def send_complete_callback(context, messaging_result):
     print('messagingResult : {0}'.format(messaging_result))
 
 
-def send_device_message(connection_string, protocol, device_id, message_str):
+def send_device_message(connection_string, device_id, message_str):
     """
     Send a message to your device and handle the feedback message when the device
     acknowledges the cloud-to-device message:
     :param connection_string: Connection string to send message to device
-    :param protocol: Protocol to send message on (HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS
     :param device_id: Name of device to send a message to
     :param message_str: Message to send to device)
     :return:
     """
-    # Todo: Implement ability to send messages using different protocols
     # Cannot find any documentation on how to do this...
+    from iothub_service_client.iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
+
     try:
         iothub_messaging = IoTHubMessaging(connection_string)
         iothub_messaging.open(open_complete_callback, OPEN_CONTEXT)
@@ -79,7 +76,7 @@ class sendMessage:
         connection_string = self.connect_data[CONNECT_LONG]
 
         if self.connect_code == CONNECT_SEND_STRING_CODE:
-            send_device_message(connection_string, self.connect_data[PROTOCOL], self.connect_data[ID_LONG],
+            send_device_message(connection_string, self.connect_data[ID_LONG],
                                 self.connect_data[MESSAGE_LONG])
 
         else:

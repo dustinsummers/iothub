@@ -62,12 +62,12 @@ LOGTRACE_STR = "logtrace"
 
 # REGEX for validating correct connection string
 REGEX_X509_STRING = "HostName=.*azure-devices.net;DeviceId=.*;x509=true"
-REGEX_RETRIEVE_CONNECT_STRING = "HostName=.*azure-devices.net;DeviceId=.*;SharedAccessKey="
-REGEX_SEND_CONNECT_STRING = "HostName=.*azure-devices.net;SharedAccessKeyName=.*;SharedAccessKey="
+REGEX_RETRIEVE_CONNECT_STRING = "HostName=.*azure-devices.net;DeviceId=.*;SharedAccessKey=.*"
+REGEX_SEND_CONNECT_STRING = "HostName=.*azure-devices.net;SharedAccessKeyName=.*;SharedAccessKey=.*"
 # Certificate file headers
 CERTIFICATE_FILE_HEADER = "-----BEGIN CERTIFICATE-----"
 KEY_FILE_HEADER = "-----BEGIN RSA PRIVATE KEY-----"
 
 # Test Connection
-TEST_CONNECT_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=g/yFqDtb//4rMTKKkr2UL3Oq0XBCaFRaH1uFam5778k="
+TEST_CONNECT_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey=Ql3FYv4bUJApyjWNooPbqHgYLGCZlnhsmN/sr3x20FI="
 TEST_X509_STRING = "HostName=ScriptRemoteIoTHub.azure-devices.net;DeviceId=thumbprintDevice;x509=true"

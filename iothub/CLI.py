@@ -25,9 +25,7 @@ Help:
     For help using this tool, please refer to the README.md documentation:
     https://github.com/<provide rest of url>
 """
-import warnings
-with warnings.catch_warnings():
-    warnings.filterwarnings("ignore")
+
 from inspect import getmembers, isclass
 from docopt import docopt
 
@@ -35,9 +33,14 @@ from . import __version__ as VERSION
 
 
 def main():
-    """Main CLI entrypoint."""
-    import iothub.commands
+    """
+        Main CLI entrypoint.
 
+        ToDo: Determine what user is doing at this level to decrease execution time... see below...
+        If we can determine what user is wanting to do at this level, we can eliminate unnecessary
+        imports by only directing it towards the init files that matter.
+    """
+    import iothub.commands
     options = docopt(__doc__, version=VERSION)
 
     # Here we'll try to dynamically match the command the user is trying to run

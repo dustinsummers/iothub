@@ -1,7 +1,8 @@
 """The device command"""
-from iothub.commands.device_commands import retrieveMessage
-from .validateInformation import *
+from iothub.commands.validateInformation import *
+from iothub.commands.device_commands.retrieveMessage import *
 from .Base import Base
+from .globals import *
 
 
 class Device(Base):
@@ -26,14 +27,17 @@ class Device(Base):
         """
         Parse values received to craft appropriate retrieval message for IoT Hub
         The following values are required for a connection:
+
         1) Connection String
             a) Host Name
             b) Device ID
             c) SharedAccess Key Or x509=true(certificate based connection)
-       2) Transfer Protocol
+
+        2) Transfer Protocol
             a) AMQP or AMQP_WS (Ports 5671 or 443)
             b) MQTT or MQTT_WS (Ports 8883 or 443)
             c) HTTP (Port 443)
+
         3) RSA Connection Certs (if connecting using certificates)
             a) RSA Certificate
             b) RSA Key

@@ -4,3 +4,4 @@ hello.py
 new-device.cert.pem
 new-device.key.pem
 /SDK/
+__pycache__

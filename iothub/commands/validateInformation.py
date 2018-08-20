@@ -1,5 +1,4 @@
 from iothub.commands.globals import *
-from iothub_client import IoTHubTransportProvider
 import re
 import pem
 
@@ -122,6 +121,8 @@ def get_protocol(protocol_string):
             Can either be AQMP, AQMP WS, MQTT, or HTTP
     :return:
     """
+    from iothub_client.iothub_client import IoTHubTransportProvider
+
     if protocol_string == "HTTP":
         return IoTHubTransportProvider.HTTP
 

@@ -1,7 +1,5 @@
 import time
 from iothub.commands.globals import *
-from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-from iothub_client import IoTHubMessageDispositionResult, IoTHubError
 
 # HTTP options
 # Because it can poll "after 9 seconds" polls will happen effectively
@@ -30,7 +28,10 @@ def receive_message_callback(message, counter):
     :param counter: Count of the number message it is
     :return: Return to the service that he messages were accepted
     """
+    from iothub_client import IoTHubMessageDispositionResult
+
     global RECEIVE_CALLBACKS
+
     message_buffer = message.get_bytearray()
     size = len(message_buffer)
     print("\n=-=-=-=-=-\nReceived Message [%d]:" % counter)
@@ -46,6 +47,7 @@ def receive_message_callback(message, counter):
 
 
 def print_last_message_time(client):
+    from iothub_client import IoTHubClientError, IoTHubClientResult
     try:
         last_message = client.get_last_message_receive_time()
         print("Last Message: %s" % time.asctime(time.localtime(last_message)))
@@ -58,6 +60,7 @@ def print_last_message_time(client):
 
 
 def client_connect(connection_string, certificate, key, protocol):
+    from iothub_client import IoTHubError
     try:
         client = iothub_client_init(connection_string, certificate, key, protocol)
         time.sleep(1)
@@ -73,6 +76,7 @@ def client_connect(connection_string, certificate, key, protocol):
 
 def iothub_client_init(connection_string, protocol, certificate, key):
     print("Initializing Connection...")
+    from iothub_client import IoTHubClient, IoTHubTransportProvider
     client = IoTHubClient(connection_string, protocol)
 
     # HTTP specific settings

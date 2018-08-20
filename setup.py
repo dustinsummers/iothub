@@ -2,9 +2,7 @@
 from codecs import open
 from os.path import abspath, dirname, join
 from subprocess import call
-
 from setuptools import Command, find_packages, setup
-
 from iothub import __version__
 
 this_dir = abspath(dirname(__file__))
