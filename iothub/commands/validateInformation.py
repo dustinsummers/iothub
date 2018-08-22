@@ -118,10 +118,11 @@ def get_protocol(protocol_string):
     """
     Get the correct protocol from the one provided by the user
     :param protocol_string: Protocol String:
-            Can either be AQMP, AQMP WS, MQTT, or HTTP
+            Can either be AMQP, AMQP_WS, MQTT_WS, or HTTP
     :return:
     """
     from iothub_client.iothub_client import IoTHubTransportProvider
+    print (type(protocol_string))
 
     if protocol_string == "HTTP":
         return IoTHubTransportProvider.HTTP
@@ -139,6 +140,7 @@ def get_protocol(protocol_string):
         return IoTHubTransportProvider.MQTT_WS
 
     else:
+        print("User submitted %s" % protocol_string)
         print("Unsupported protocol type. Defaulting to AMQP")
         print("Supported types are: HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS")
         return IoTHubTransportProvider.AMQP

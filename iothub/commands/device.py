@@ -83,6 +83,9 @@ class Device(Base):
             # See if RSA variables exist
             rsa_cert = validate_rsa_cert(self.options[RSA_CERT])
             rsa_key = validate_rsa_key(self.options[RSA_KEY])
+            print("Checking rsa key")
+            print(rsa_key)
+            print(self.options[RSA_KEY])
             connect_data = {CONNECT_LONG: connect_string,
                             CERTIFICATE_LONG: rsa_cert,
                             KEY_LONG: rsa_key,
