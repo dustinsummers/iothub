@@ -13,11 +13,15 @@ openssl pkcs12 -export -out secondary.pfx -inkey secondary.key -in secondary.crt
 ### To get thumbprint of those certificates ###
 openssl x509 -noout -fingerprint -sha1 -inform pem -in [certificate-file.crt]
 
-### To print out the thumbprint ###
-openssl x509 -out thumbprint1.txt -fingerprint -sha1 -inform pem -in [certificate-file.crt]
-
-### Change file extension to .pem ###
-As long as your files being with --BEGIN they are in pem format, and you can just add that file extentsion on to them
+### To print out the thumbprints ###
+openssl x509 -out thumbprint1.txt -fingerprint -sha1 -inform pem -in primary.crt
+openssl x509 -out thumbprint2.txt -fingerprint -sha1 -inform pem -in secondary.crt
 
 ### To get the RSA Key File from the private key ###
-openssl rsa -in private_key.pem -out rsa_key.pem
+openssl rsa -in private_key.pem -out primary_rsa.key
+
+### When you call the IoTHub Command, you will pass in the *.crt and
+
+
+
+
