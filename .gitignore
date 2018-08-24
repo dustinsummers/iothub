@@ -3,5 +3,6 @@ test.sh
 hello.py
 #new-device.cert.pem
 #new-device.key.pem
+venv/
 /SDK/
 __pycache__

@@ -48,11 +48,11 @@ def send_device_message(connection_string, device_id, message_str):
             iothub_messaging.send_async(device_id, message, send_complete_callback, i)
             try:
                 # Try Python 2.xx first
-                input(eval("Press enter to continue...\n"))
+                input(eval("Press y to continue..."))
             except:
                 pass
                 # Use python 3.xx in the case of exception
-                input("Press Enter to continue...\n")
+                input("Press Enter to continue...")
 
             iothub_messaging.close()
 

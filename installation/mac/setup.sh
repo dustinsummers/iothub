@@ -10,4 +10,5 @@ echo "\n=-=-=-=-= Installing Azure SDK's for IoTHub =-=-=-=-\n"
 sudo -H pip3 install azure_iothub_device_client
 sudo -H pip3 install azure_iothub_service_client
 sudo -H pip3 install pem
+sudo -H pip3 install docopt
 echo "\n=-=-=-=-= Finished =-=-=-=-\n"
