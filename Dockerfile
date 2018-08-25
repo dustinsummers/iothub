@@ -1,48 +1,57 @@
 FROM ubuntu:16.04
-MAINTAINER Dustin Summers <dustin.summers@fortegollc.com
-ENV boost="http://archive.ubuntu.com/ubuntu/pool/universe/b/boost1.58/libboost1.58-all-dev_1.58.0+dfsg-5ubuntu3.1_amd64.deb"
+MAINTAINER Dustin Summers <dustin.summers@fortegollc.com>
 
-# update source list for apt-get
-#RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty main universe" | tee -a /etc/apt/sources.list
-#RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main universe" | tee -a /etc/apt/sources.list
-#RUN cat /etc/apt/sources.list
+# pull in image dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y software-properties-common
+RUN apt-get -yqq install wget git cmake curl build-essential libcurl4-openssl-dev libssl-dev uuid-dev
+RUN curl -V
 
-# install system-wide deps for python
-RUN apt-get -yqq update
-RUN apt-get -yqq install wget python-pip python3 curl build-essential libcurl4-openssl-dev libssl-dev uuid-dev
-RUN apt-get -yqq install libboost-all-dev
-#RUN apt-get install --allow-downgrades libboost1.58-dev
+# clone in SDK's to build manually
+RUN mkdir /SDK
+WORKDIR /SDK
+RUN git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
+
+# build c module for the SDK
+RUN cd azure-iot-sdk-python/c \
+    && mkdir cmake \
+    && cd cmake \
+    && cmake .. \
+    && cmake --build . 
 
 
-# pull in all code to docker and set working directory
-COPY . /app
-WORKDIR /app
 
-# install boost dependency
-#RUN mkdir dependencies
-#ORKDIR /app/dependencies
-#RUN wget --content-disposition $boost
-#RUN pwd
-#RUN ls
 
-#RUN apt install .
 
-# install iothub
-#RUN cd /app && apt install libboost1.58-all-dev.deb
+# pull in python 3.6
+#RUN add-apt-repository ppa:jonathonf/python-3.6
+#RUN apt update
+#RUN apt -y install python3.6
+#RUN apt -y install python3.6-dev
+#RUN apt -y install python3.6-dev
+#RUN apt -y install python3.6-venv
+#RUN wget https://bootstrap.pypa.io/get-pip.py
+#RUN python3.6 get-pip.py
+#RUN rm /usr/local/bin/pip3
+#RUN ln -s /usr/bin/python3.6 /usr/local/bin/python3
+#RUN ln -s /usr/local/bin/pip /usr/local/bin/pip3
+#RUN apt-get -yqq install libboost-all-dev
+#
+## pull in all code to docker and set working directory
+#COPY . /app
 #WORKDIR /app
-RUN pip install --upgrade pip
-RUN pip install pem
-RUN pip install azure-iothub-device-client
-RUN pip install azure-iothub-service-client
-RUN pip install .
-RUN python --version
-RUN python3 --version
+#
+## install iothub
+#RUN pip3 install --upgrade pip
+#RUN ls /usr/local/lib
+#RUN apt-get -y remove 'python3.5'
+#RUN pip3.6 install pem
+#RUN pip3.6 install azure-iothub-device-client
+#RUN pip3.6 install azure-iothub-service-client
+#RUN pip3.6 install .
+#RUN python --version
+#RUN python3 --version
+#RUN ls /usr/local/lib
 
- # fetch app specific deps
-#RUN pip install pem
-#RUN pip install docopt
-#RUN pip install azure-iothub-device-client
-#RUN pip install azure-iothub-service-client
-
-#Entry point for app
+# entry point for app
 ENTRYPOINT ["iothub"]

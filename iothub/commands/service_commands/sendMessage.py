@@ -1,4 +1,6 @@
 from iothub.commands.globals import *
+#import getch
+import platform
 
 OPEN_CONTEXT = 0
 FEEDBACK_CONTEXT = 1
@@ -45,14 +47,11 @@ def send_device_message(connection_string, device_id, message_str):
             prop_text = "PropMsg_%d" % i
             prop_map.add("Property", prop_text)
 
+            print (platform.python_version())
+
             iothub_messaging.send_async(device_id, message, send_complete_callback, i)
-            try:
-                # Try Python 2.xx first
-                input(eval("Press y to continue..."))
-            except:
-                pass
-                # Use python 3.xx in the case of exception
-                input("Press Enter to continue...")
+
+            input("Press enter to continue...")
 
             iothub_messaging.close()
 
