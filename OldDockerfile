@@ -1,0 +1,108 @@
+FROM ubuntu:16.04
+MAINTAINER Dustin Summers <dustin.summers@fortegollc.com>
+ENV TERM linux
+
+# pull in dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get update \
+    && apt-get install -yqq software-properties-common \
+                            wget \
+                            git \
+                            cmake \
+                            build-essential \
+                            uuid-dev \
+                            sudo \
+                            libssl-dev
+                            #libcurl4-openssl-dev \
+                            #libboost-all-dev
+
+# install python 3.6
+RUN sudo add-apt-repository ppa:jonathonf/python-3.6
+RUN apt update \
+    && apt -y install python3.6 \
+                      python3.6-dev \
+                      python3.6-venv
+
+# set links for python 3.6
+RUN mkdir /SDK
+WORKDIR /SDK
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3.6 get-pip.py
+RUN rm get-pip.py
+RUN rm /usr/local/bin/pip3
+RUN ln -s /usr/bin/python3.6 /usr/local/bin/python3
+RUN ln -s /usr/local/bin/pip /usr/local/bin/pip3
+
+# configure Python
+RUN pip3 install --upgrade pip
+RUN apt-get -y remove 'python3.5'
+RUN apt-get -y remove 'python2.7'
+RUN pip3.6 install pem
+RUN python --version
+RUN python3 --version
+RUN apt-get update && apt-get install -yqq libboost-all-dev
+
+# setup sudo option (required for later install purposes)
+RUN useradd -m docker \
+    && echo "docker:docker" | chpasswd \
+    && adduser docker sudo
+RUN mkdir /etc/sudoers.d/ubuntu \
+    && echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > ubuntu
+
+#Clone IoTHub SDK's
+RUN git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
+
+# update curl to latest version
+# work in progres...
+RUN wget http://curl.haxx.se/download/curl-7.61.0.tar.gz
+RUN tar -xf curl-7.61.0.tar.gz
+RUN cd curl-7.61.0/ \
+    && ./configure \
+    && make \
+    && sudo make install
+RUN curl --version
+RUN curl-config --version
+
+# Build SDK's
+RUN cd azure-iot-sdk-python/c \
+    && mkdir cmake \
+    && cd cmake \
+    && sudo cmake .. \
+    && sudo cmake --build .
+
+# setup and build .so files for python 3.6
+WORKDIR azure-iot-sdk-python/build_all/linux
+
+#RUN sudo ln -fs /usr/lib/libcurl.so.4 /usr/local/lib/ \
+#    && ./setup.sh --python-version 3.6
+
+RUN sudo ln -fs /usr/lib/libcurl.so.4 /usr/local/lib/ \
+    && ./release.sh --build-python 3.6
+
+# install device and service client packages
+RUN pip3.6 install release_device_client/dist/azure_iothub_device_client-1.4.2-py3-none-manylinux1_x86_64.whl
+RUN pip3.6 install release_service_client/dist/azure_iothub_service_client-1.4.2-py3-none-manylinux1_x86_64.whl
+
+WORKDIR ../../../..
+RUN ls -al
+RUN rm -rf SDK
+RUN ls -al
+
+RUN echo "Finished up to this point"
+#
+## pull in all code to docker and set working directory
+#COPY . /app
+#WORKDIR /app
+
+#if only this worked...
+##RUN pip3.6 install azure-iothub-device-client
+##RUN pip3.6 install azure-iothub-service-client
+
+## install iothub
+#RUN pip3.6 install .
+
+
+# entry point for app
+ENTRYPOINT ["iothub"]
