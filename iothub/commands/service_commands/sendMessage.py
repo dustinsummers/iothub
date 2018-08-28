@@ -1,5 +1,5 @@
+import time
 from iothub.commands.globals import *
-#import getch
 import platform
 
 OPEN_CONTEXT = 0
@@ -51,7 +51,8 @@ def send_device_message(connection_string, device_id, message_str):
 
             iothub_messaging.send_async(device_id, message, send_complete_callback, i)
 
-            input("Press enter to continue...")
+            # input("Press enter to continue...")
+            time.sleep(1)
 
             iothub_messaging.close()
 
