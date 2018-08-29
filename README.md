@@ -18,121 +18,57 @@ Also, you will need information for the various IoT Hub Devices/Service that you
 
 ## Installation
 
-First download or clone this repository to a folder of your choice.
+To use IoTHub, install [Docker](https://www.docker.com/get-started).
 
-To clone, you will need to have established SSH certificates with Fortego Gitlab.  You can find those steps here:
-[Install SSH Certs](https://docs.gitlab.com/ee/ssh/)
+Next, reach out to Dustin Summers on Slack to be granted access to pull the Docker Image.
+
+Once installed, run the following command:
 
 ```bash
-git clone git@git.fortegodev.com:BADROBOT/iothub.git
+docker pull dustinsummers/iothub
 ```
 
-### Installing on Windows
-On a Windows machine, open up a command prompt and navigate to the iothub\installation\windows folder.
+The installation takes ~2 minutes.
 
-Run the following setup file...
+Once installed, run the following command:
+
 ```bash
-setup.bat
+docker tag dustinsummers/iothub iothub
+docker run iothub
 ```
 
-Followed by the installation file
-```bash
-install.bat
-```
-Which will produce the following output:
-
-```text
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=Uninstalling IoTHub=-=-=-=-
-Skipping iothub as it is not installed
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
--=-=-=-=Installing IoTHub again!=-=-=-=-=-
-Processing c:\users\fortegoadmin\desktop\iothub-cli
-Requirement already satisfied: docopt in c:\users\fortegoadmin\appdata\local\programs\python\python36\lib\site-packages (from iothub==1.0.0) (0.6.2)
-Installing collected packages: iothub
- Running setup.py install for iothub: started
-   Running setup.py install for iothub: finished with status 'done'
-Successfully installed iothub-1.0.0
-```
-
-This will install the iothub cli.  Test it by running the following command:
+This should print out the following:
 
 ```bash
 iothub
+Usage:
+    iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
+    iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-K|--access-key) <access-key> [--protocol=<protocol>]
+    iothub device receive (-H|--host) <host-name> (-i|--id) <device-id> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
+    iothub service send (-m|--message) <message> (-C|--connect) <connection-string> (-i|--id) <device-id> [--protocol=<protocol>]
+    iothub service send (-m|--message) <message> (-H|--host) <host-name> (-N|--access-name) <access-name> (-K|--access-key) <access-key> (-i|--id) <device-id> [--protocol=<protocol>]
+
 ```
-And it will print out a list of the available commands you can use.
-
-### Installing on Mac
-
-Note: If you have ANACONDA installed, you may need to disable the PATH variable pointing prior to doing the 
-setup.  Microsoft's scripts look for particular folders in pythons main directory that are not present in anaconda's
-version, and it will cause their setup script to crash.  Simply go into the .bashprofile file and put a '#' in front of 
-the path variable (if it contains a path to anaconda)
-
-On a MAC, open up a terminal and navigate to the iothub/installation/mac folder
-
-Run the setup script, which will install the pip azure iothub packages onto your system.
-```bash
-./setup.sh
-```
-
-
-Once it's complete, run the installation file, which will install iothub onto your platform
-```bash
-./install.sh
-```
-
-This will install the iothub cli.  Test it by running the following command:
-
-```bash
-iothub
-```
-
-And it will print out a list of the available commands you can use.
-
-
-###Installing on Linux
-On Linux, open up a terminal and navigate to the iothub/installation/linux folder
-
-Run the following commands to run the setup script.
-This script takes ~3 minutes, as it needs to compile the entire 'Azure IoT HubC' SDK onto your system.
-```bash
-./setup.sh
-```
-
-Once it's complete, run the installation file, which will install iothub onto your platform
-```bash
-./install.sh
-```
-
-This will install the iothub cli.  Test it by running the following command:
-
-```bash
-iothub
-```
-
-And it will print out a list of the available commands you can use.
-
-**Note**: Due to the various configurations of Linux systems, this may not work for all.  This was tested
-on a virtual machine running latest version of Kali as of today (08/20/2018)
-
 
 ### Examples
 The following are the commands to interact with iothub, as well as some examples below
 
 ```
-iothub device receive -C "HostName=<iothubname>.azure-devices.net;DeviceId=<device name>;x509=true" -c new-device.cert.pem -k new-device.key.pem --protocol=MQTT
+docker run iothub device receive -C "HostName=<iothubname>.azure-devices.net;DeviceId=<device name>;x509=true" -c new-device.cert.pem -k new-device.key.pem --protocol=MQTT
 ```
 
 ```
-iothub device receive -H <iothubname> -i <device name> -K <access-key>
+docker run iothub device receive -H <iothubname> -i <device name> -K <access-key>
 ```
 
 ```
-iothub service send -m "Test 1" -C "HostName=<iothubname>.azure-devices.net;SharedAccessKeyName=<access name>;SharedAccessKey=<access key>" -i <name of device to send message to> --protocol=AMQP
+docker run iothub service send -m "Test 1" -C "HostName=<iothubname>.azure-devices.net;SharedAccessKeyName=<access name>;SharedAccessKey=<access key>" -i <name of device to send message to> --protocol=AMQP
 ```
 
 ### Usage
+```bash
+
 iothub device receive (-C|--connect) <connection-string> [--protocol=<protocol>]
 
 iothub device receive (-C|--connect) <connection-string> (-c|--certificate) <RSA-cert> (-k|--key) <RSA-key> [--protocol=<protocol>]
@@ -168,6 +104,7 @@ Options:
 -m,              --message                   Message to send to device
 
 --protocol=<protocol>                        Protocol to use. Can be HTTP, AMQP, AMQP_WS, MQTT, MQTT_WS. [default: AMQP]
+```
 
 ## Built With
 [Microsoft Azure](https://portal.azure.com)
@@ -175,6 +112,8 @@ Options:
 [Python Azure SDK](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)
 
 [Python](https://www.python.org/downloads)
+
+[Docker](https://www.docker.com)
 
 [DocOpt](https://docopt.org)
 

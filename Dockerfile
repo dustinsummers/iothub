@@ -49,8 +49,6 @@ RUN cd azure-iot-sdk-python/c \
 # setup and build .so files for python 3.6
 WORKDIR azure-iot-sdk-python/build_all/linux
 RUN ./release.sh --build-python 3.6
-#RUN sudo ln -fs /usr/lib/libcurl.so.4 /usr/local/lib/ \
-#    && ./release.sh --build-python 3.6
 
 # install device and service client packages
 RUN pip3.6 install release_device_client/dist/azure_iothub_device_client-1.4.2-py3-none-manylinux1_x86_64.whl

@@ -1,8 +1,10 @@
 test.sh
 .idea
 hello.py
-#new-device.cert.pem
-#new-device.key.pem
+new-device.cert.pem
+new-device.key.pem
+/Certificates
 venv/
 /SDK/
 __pycache__
+/installation
