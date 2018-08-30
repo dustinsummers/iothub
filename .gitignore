@@ -1,8 +1,9 @@
 test.sh
 .idea
 hello.py
-new-device.cert.pem
-new-device.key.pem
+iotSSDevice.cert
+iotSSDevice.key
+rsa_key.pem
 /Certificates
 venv/
 /SDK/

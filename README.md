@@ -54,15 +54,21 @@ Usage:
 ### Examples
 The following are the commands to interact with iothub, as well as some examples below
 
-```
-docker run iothub device receive -C "HostName=<iothubname>.azure-devices.net;DeviceId=<device name>;x509=true" -c new-device.cert.pem -k new-device.key.pem --protocol=MQTT
+Note: In order to reference files on your host machine inside of the Docker container, you must add the following to the command:
+
+```bash
+docker run -v /path/to/your/files:/mnt/path iothub
 ```
 
+```bash
+docker run -v /path/to/certs:/mnt/certs iothub device receive -C "HostName=<iothubname>.azure-devices.net;DeviceId=<device name>;x509=true" -c /mnt/certs/new-device.cert.pem -k /mnt/certs/new-device.key.pem --protocol=MQTT
 ```
+
+```bash
 docker run iothub device receive -H <iothubname> -i <device name> -K <access-key>
 ```
 
-```
+```bash
 docker run iothub service send -m "Test 1" -C "HostName=<iothubname>.azure-devices.net;SharedAccessKeyName=<access name>;SharedAccessKey=<access key>" -i <name of device to send message to> --protocol=AMQP
 ```
 
@@ -121,8 +127,6 @@ Options:
 For the versions available, see the [tags on this repository](https://github.com/dustinsummers/iothub/tags).
 
 ## Authors
-BADROBOT Team Members:
-
-Matt Gorman
+BadRobot IoT Hub Contributors:
 
 Dustin Summers

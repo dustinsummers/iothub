@@ -1,6 +1,5 @@
 import time
 from iothub.commands.globals import *
-import platform
 
 OPEN_CONTEXT = 0
 FEEDBACK_CONTEXT = 1
@@ -47,8 +46,6 @@ def send_device_message(connection_string, device_id, message_str):
             prop_text = "PropMsg_%d" % i
             prop_map.add("Property", prop_text)
 
-            print (platform.python_version())
-
             iothub_messaging.send_async(device_id, message, send_complete_callback, i)
 
             # input("Press enter to continue...")
@@ -59,6 +56,7 @@ def send_device_message(connection_string, device_id, message_str):
     except IoTHubError as iothub_error:
         print("Unexpected error {0}" % iothub_error)
         return
+
     except KeyboardInterrupt:
         print("IoTHubMessaging sample stopped")
 
