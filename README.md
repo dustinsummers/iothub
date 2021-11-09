@@ -20,7 +20,7 @@ Also, you will need information for the various IoT Hub Devices/Service that you
 
 To use IoTHub, install [Docker](https://www.docker.com/get-started).
 
-Next, reach out to Dustin Summers on Slack to be granted access to pull the Docker Image.
+Next, reach out maintainers (dustin@dustn.dev) to be granted permissions to pull the Docker Image.
 
 Once installed, run the following command:
 
