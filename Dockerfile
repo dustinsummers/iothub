@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Dustin Summers <dustin.summers@fortegollc.com>
+MAINTAINER Dustin Summers <dustin@dustn.dev>
 ENV TERM linux
 
 # pull in dependencies
